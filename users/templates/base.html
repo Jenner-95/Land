@@ -1,0 +1,121 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    {% block extrastatic %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'font/iconsmind/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'font/simple-line-icons/css/simple-line-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap-stars.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap-float-label.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap-stars.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>{% block title %}Document{% endblock %}</title>
+
+<style>
+  option {
+      color: black !important;
+      background: transparent !important;
+  }
+
+  body{
+    background: #2a93d5 !important;
+  }
+    .landing-page .section.footer {
+    background-color: #2a93d5 !important;
+  }
+
+  .landing-page form.dark-background .bootstrap-tagsinput, .landing-page form.dark-background .form-control {
+    color: #fff !important
+}
+</style>
+
+</head>
+
+
+<body class="show-spinner">
+    <div class="landing-page">
+        {% block navbar %}
+        <div class="mobile-menu">
+            <a href="LandingPage.Home.html" class="">
+                <span></span>
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item mt-2">
+                    <a href="{% url 'users:login' %}">INICIAR SESION</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'users:register' %}">REGISTRATE</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-container">
+            <nav class="landing-page-nav">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a class="" href="LandingPage.Home.html">
+                        <span class="white"></span>
+                        <span class="dark"></span>
+                    </a>
+                    <ul class="navbar-nav d-none d-lg-flex flex-row">
+                        <li class="nav-item mr-3 active">
+                            <a href="{% url 'users:login' %}">INICIAR SESION</a>
+                        </li>
+                        <li class="nav-item pl-2">
+                            <a class="btn btn-outline-semi-light btn-sm pr-4 pl-4" href="{% url 'users:register' %}">REGISTRATE</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="mobile-menu-button">
+                        <i class="simple-icon-menu"></i>
+                    </a>
+                </div>
+            </nav>
+            {% endblock %}
+
+            <div class="content-container">
+                <div class="section home subpage-long">
+                    <div class="container">
+                        <div class="row home-row mb-0">
+                            <div class="col-12 col-lg-6 col-xl-4 col-md-12">
+                                <div class="home-text">
+
+                                     {% block content %}
+
+                                    {% endblock %}
+
+                                    {% block footer %}
+                                    {% endblock%}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.barrating.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.barrating.min.js' %}"></script>
+    <script src="{% static 'js/vendor/landing-page/headroom.min.js' %}"></script>
+    <script src="{% static 'js/vendor/landing-page/jQuery.headroom.js' %}"></script>
+    <script src="{% static 'js/vendor/landing-page/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'js/dore.scripts.landingpage.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    {% block extrajs %}
+    {% endblock %}
+</body>
+
+</html>

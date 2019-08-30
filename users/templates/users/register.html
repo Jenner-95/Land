@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Registro
+{% endblock %}
+
+
+{% block content %}
+<div class="display-1">
+    Registrate
+</div>
+<form action="{% url 'users:register' %}" method="POST" class="dark-background" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label class="form-group has-top-label">
+        <input type="text" name="first_name" class="form-control" />
+        <span>NOMBRES</span>
+    </label>
+    <label class="form-group has-top-label">
+        <input type="text" name="last_name" class="form-control" />
+        <span>APELLIDOS</span>
+    </label>
+     <label class="form-group has-top-label">
+        <input type="text" name="telephone" class="form-control" />
+        <span>TELEFONO</span>
+    </label>
+    <label class="form-group has-top-label">
+        <input type="text" name="email" class="form-control" />
+        <span>CORREO</span>
+    </label>
+   <span>TIPO DE USUARIO</span>
+        <select name="permissions" class="form-control">
+            <option value="0">Colaborador</option>
+            <option value="1">Administrador</option>
+        </select><br>
+
+    <label class="form-group has-top-label">
+        <input class="form-control" name="photo" type="file" placeholder="" />
+        <span>SUBIR FOTO</span>
+    </label>
+
+    <button class="btn btn-outline-semi-light btn-xl mt-4">REGISTRAR</button>
+</form><br><br>
+<p class="white mb-5">
+    ¿Ya tienes cuenta?» <a href="{% url 'users:login' %}" class="white-underline-link">Iniciar Sesion</a>.
+</p>
+{% endblock %}

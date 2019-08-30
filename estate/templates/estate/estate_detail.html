@@ -1,0 +1,65 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+Fincas
+{% endblock %}
+
+
+{% block content %}
+<div class="col-12 col-xl-12 col-lg-5 col-md-6">
+    <span class="home-text">
+    <h4 align="center" class="display-1">Fincas</h4>
+
+{% if user.permissions == '0' %}
+    <button type="button" style='display:none' style="margin-left: 500px" class="btn btn-outline-semi-light btn-xl mt-4"><a href="{% url 'estate:estate_add' user_id %}">Registrar Finca</a></button>
+{% else %}
+    <button style="margin-left: 500px" class="btn btn-outline-semi-light btn-xl mt-4"><a href="{% url 'estate:estate_add' user_id %}">Registrar Finca</a></button>
+{% endif %}
+
+        {% if estates %}
+                {% for estate in estates %}
+            <div class="container" id="blog">
+              <div class="row">
+                <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center">
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-12 col-lg-6 mb-4">
+                  <div class="card flex-row mb-5 listing-card-container">
+                    <div class="w-40 position-relative">
+                      <a>
+                        <img class="card-img-left" src="/media/{{estate.image}}" alt="Card image cap">
+                      </a>
+                    </div>
+                    <div class="w-60 d-flex align-items-center">
+                      <div class="card-body">
+                        <a href="">
+                          <h3 class="mb-4 listing-heading ellipsis">{{estate.name}}</h3>
+                        </a>
+                        <p class="listing-desc ellipsis">
+                          {{estate.country}}
+                        </p>
+                        <footer>
+                          <p class="text-muted text-small mb-0 font-weight-light">{{estate.departament}} </p>
+                        </footer>
+                      </div>
+                    </div>
+                          {% if user.permissions == '0' %}
+                </div>
+                  <a href="{% url 'estate:estate_edit' estate.id user_id %}" style="display:none" class="btn btn-outline-semi-light btn-lg mt-4" role="button" aria-pressed="true">Editar</a>
+                  <a href="{% url 'estate:estate_delete' estate.id user_id %}" style="display:none" class="btn btn-outline-semi-light btn-lg mt-4" role="button" aria-pressed="true">Eliminar</a>
+                  <a href="{% url 'estate:plot_detail' estate.id user_id %}" class="btn btn-outline-semi-light btn-lg mt-4" role="button" aria-pressed="true">Ver Parcelas</a>
+                </div>
+                          {% else %}
+                </div>
+                  <a href="{% url 'estate:estate_edit' estate.id user_id %}" class="btn btn-outline-semi-light btn-lg mt-4" role="button" aria-pressed="true">Editar</a>
+                  <a href="{% url 'estate:estate_delete' estate.id user_id %}" class="btn btn-outline-semi-light btn-lg mt-4" role="button" aria-pressed="true">Eliminar</a>
+                  <a href="{% url 'estate:plot_detail' estate.id user_id %}" class="btn btn-outline-semi-light btn-lg mt-4" role="button" aria-pressed="true">Ver Parcelas</a>
+                </div>
+                          {% endif %}
+                  {% endfor %}
+                {% endif %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

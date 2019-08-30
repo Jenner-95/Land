@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Iniciar Sesión
+{% endblock %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+{% block content %}
+<div class="display-1">
+    Iniciar Sesión
+</div>
+
+<form action="{% url 'users:login' %}" method="POST" class="dark-background">
+    {% csrf_token %}
+   <label class="form-group has-top-label">
+       <input class="form-control"  type="text" name="email" />
+       <span>CORREO</span>
+   </label>
+    <span>TIPO DE USUARIO</span>
+        <select name="permissions" class="form-control">
+            <option value="0">Colaborador</option>
+            <option value="1">Administrador</option>
+        </select><br>
+    <button class="btn btn-outline-semi-light btn-xl mt-4">INICIAR SESION</button>
+</form><br><br>
+<p class="white mb-5">
+    ¿Nuevo en la aplicacion?» <a href="{% url 'users:register' %}" class="white-underline-link">Regístrate ahora</a>.
+</p>
+{% endblock %}
+
